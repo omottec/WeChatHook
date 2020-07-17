@@ -41,6 +41,7 @@ public class WCDB implements IXposedHookLoadPackage {
                 @Override
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                     Log.i(OPEN_DATABASE,"before*********************");
+                    Log.i(OPEN_DATABASE, "this:" + param.thisObject);
                     Log.i(OPEN_DATABASE,"path:" + param.args[0]);
                     if (param.args[1] != null) {
                         Log.i(OPEN_DATABASE,"password:" + new String((byte[]) param.args[1], "UTF-8"));
@@ -67,6 +68,7 @@ public class WCDB implements IXposedHookLoadPackage {
                 @Override
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                     Log.i(INSERT_WITH_ON_CONFLICT,"before=====================");
+                    Log.i(INSERT_WITH_ON_CONFLICT, "this:" + param.thisObject);
                     Log.i(INSERT_WITH_ON_CONFLICT, "table:" + param.args[0]);
                     Log.i(INSERT_WITH_ON_CONFLICT, "nullColumnHack:" + param.args[1]);
                     Log.i(INSERT_WITH_ON_CONFLICT, "initialValues:" + param.args[2]);
@@ -86,6 +88,7 @@ public class WCDB implements IXposedHookLoadPackage {
                 @Override
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                     Log.i(DELETE_TAG, "before=====================");
+                    Log.i(DELETE_TAG, "this:" + param.thisObject);
                     Log.i(DELETE_TAG, "table:" + param.args[0]);
                     Log.i(DELETE_TAG, "whereClause:" + param.args[1]);
                     Log.i(DELETE_TAG, "whereArgs:" + param.args[2]);
@@ -106,6 +109,7 @@ public class WCDB implements IXposedHookLoadPackage {
                 @Override
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                     Log.i(UPDATE_WITH_ON_CONFLICT,"before=====================");
+                    Log.i(UPDATE_WITH_ON_CONFLICT, "this:" + param.thisObject);
                     Log.i(UPDATE_WITH_ON_CONFLICT, "table:" + param.args[0]);
                     Log.i(UPDATE_WITH_ON_CONFLICT, "values:" + param.args[1]);
                     Log.i(UPDATE_WITH_ON_CONFLICT, "whereClause:" + param.args[2]);
@@ -129,6 +133,7 @@ public class WCDB implements IXposedHookLoadPackage {
                 @Override
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                     Log.i(RAW_QUERY_WITH_FACTORY,"before=====================");
+                    Log.i(RAW_QUERY_WITH_FACTORY, "this:" + param.thisObject);
                     String sql = (String) param.args[1];
                     Log.i(RAW_QUERY_WITH_FACTORY,"sql:" + sql);
                     Log.i(RAW_QUERY_WITH_FACTORY,"selectionArgs:" + Arrays.toString((Object[]) param.args[2]));
